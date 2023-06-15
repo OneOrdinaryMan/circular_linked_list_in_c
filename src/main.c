@@ -22,7 +22,7 @@ int main() {
   for (int i = 0; i < 10; i++) {
     append(&input_list, i);
   }
-  printf("%d\n", get_value(&input_list, 3));
+  printf("%d\n", get_index(&input_list, 9));
   delete_list(&input_list);
   return 0;
 }
