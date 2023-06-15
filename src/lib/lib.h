@@ -14,8 +14,8 @@ typedef struct {
 } linked_list;
 linked_list create_list();
 node *create_node(int value);
-void prepend(linked_list *);
-void append(linked_list *);
+void prepend(linked_list *, int);
+void append(linked_list *, int);
 int remove_head(linked_list *);
 int get_value(linked_list *, int);
 int get_index(linked_list *, int);
