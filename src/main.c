@@ -20,8 +20,9 @@
 int main() {
   linked_list input_list = create_list();
   for (int i = 0; i < 10; i++) {
-    prepend(&input_list, i);
+    append(&input_list, i);
   }
+  printf("%d\n", get_value(&input_list, 3));
   delete_list(&input_list);
   return 0;
 }
