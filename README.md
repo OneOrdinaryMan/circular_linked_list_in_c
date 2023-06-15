@@ -5,7 +5,7 @@ Circular linked list is just the linked list where the next of tail is head. The
 - [x] Remove head
 - [x] Get value
 - [x] Get index
-- [ ] Insert at index
+- [x] Insert at index
 - [ ] Remove at index
 ## Prepend
 Prepend function will push the current head to the next position and be the next head. If there is no elements it will become the head of the list with next and prev
@@ -100,6 +100,7 @@ int get_value(linked_list *input_list, int index) {
 ```
 ## Get index
 Get index function returns the index if the value is present. Returns -1 if value is not present.
+
 __Psuedo Code__
 ```c
 int get_index(linked_list *input_list, int value) {
@@ -118,6 +119,34 @@ int get_index(linked_list *input_list, int value) {
 }
 ```
 ## Insert at index
+Insert at index will insert the value at the index the current node will be pushed to the next position. If the index is greater than size, returns with out of bounds. If the index is
+size appends the value. If the index is 0, prepends the value.
+
+__Psuedo Code__
+```c
+void insert_at_index(linked_list *input_list, int index, int value) {
+  if (index > input_list->size) {
+    printf("Index out of bounds.\n");
+    return;
+  } else if (index == input_list->size) {
+    append(input_list, value);
+    return;
+  } else if (index == 0) {
+    prepend(input_list, value);
+    return;
+  }
+  node *new_node = create_node(value);
+  node *current_node = input_list->head;
+  for (int i = 0; i < index; i++) {
+    current_node = current_node->next;
+  }
+  new_node->prev = current_node->prev;
+  current_node->prev->next = new_node;
+  new_node->next = current_node;
+  current_node->prev = new_node;
+  input_list->size++;
+}
+```
 ## Remove at index
 # Licence
 This project is licenced under <mark>GNU GPL V3.0</mark> licence. Feel free to use this project.
