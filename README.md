@@ -3,7 +3,7 @@ Circular linked list is just the linked list where the next of tail is head. The
 - [x] Prepend
 - [x] Append
 - [x] Remove head
-- [ ] Get value
+- [x] Get value
 - [ ] Get index
 - [ ] Insert at index
 - [ ] Remove at index
@@ -80,6 +80,24 @@ int remove_head(linked_list *input_list) {
 ```c
 ```
 ## Get value
+Get value function will get the value at a particular index, If the index is higher than the size of the list, it will wrap around the list. If the list is empty, returns 0.
+
+__Psuedo Code__
+```c
+int get_value(linked_list *input_list, int index) {
+  if (input_list->size == 0) {
+    printf("The list is empty\n");
+    return 0;
+  }
+  index %= input_list->size;
+  int i = 0;
+  node *current_node = input_list->head;
+  for (; i < index; i++) {
+    current_node = current_node->next;
+  }
+  return current_node->value;
+}
+```
 ## Get index
 ## Insert at index
 ## Remove at index
