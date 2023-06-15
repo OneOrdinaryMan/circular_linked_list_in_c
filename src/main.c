@@ -24,7 +24,6 @@ int main() {
   }
   insert_at_index(&input_list, 2, 43);
   remove_at_index(&input_list, 2);
-  printf("%d\n", get_value(&input_list, 2));
   delete_list(&input_list);
   return 0;
 }
