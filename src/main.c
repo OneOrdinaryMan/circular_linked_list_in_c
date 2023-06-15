@@ -20,7 +20,7 @@
 int main() {
   linked_list input_list = create_list();
   for (int i = 0; i < 10; i++) {
-    append(&input_list, i);
+    prepend(&input_list, i);
   }
   delete_list(&input_list);
   return 0;
