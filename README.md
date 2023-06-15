@@ -6,7 +6,7 @@ Circular linked list is just the linked list where the next of tail is head. The
 - [x] Get value
 - [x] Get index
 - [x] Insert at index
-- [ ] Remove at index
+- [x] Remove at index
 ## Prepend
 Prepend function will push the current head to the next position and be the next head. If there is no elements it will become the head of the list with next and prev
 being the element itself.
@@ -148,5 +148,31 @@ void insert_at_index(linked_list *input_list, int index, int value) {
 }
 ```
 ## Remove at index
+Removes the node at the index and returns the value of removed node. The prev node's next is next node of the removed node and next node's prev is prev node of the removed the node.
+If the index is greater than size of the list, returns 0 with out of bounds error. If the index is 0, removes the head.
+
+__Psuedo Code__
+```c
+int remove_at_index(linked_list *input_list, int index) {
+  if (index >= input_list->size) {
+    printf("Out of bounds error\n");
+    return 0;
+  } else if (index == 0) {
+    return remove_head(input_list);
+  }
+  node *current_node = input_list->head;
+  for (int i = 0; i < index; i++) {
+    current_node = current_node->next;
+  }
+  node *prev_node = current_node->prev;
+  node *next_node = current_node->next;
+  int return_value = current_node->value;
+  prev_node->next = next_node;
+  next_node->prev = prev_node;
+  free(current_node);
+  input_list->size--;
+  return return_value;
+}
+```
 # Licence
 This project is licenced under <mark>GNU GPL V3.0</mark> licence. Feel free to use this project.
