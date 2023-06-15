@@ -15,8 +15,13 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+#include "lib/lib.h"
 #include <stdio.h>
 int main() {
-  printf("Hello, World!\n");
+  linked_list input_list = create_list();
+  for (int i = 0; i < 10; i++) {
+    append(&input_list, i);
+  }
+  delete_list(&input_list);
   return 0;
 }
